@@ -27,12 +27,13 @@ leave the setting "platform=espressif8266@1.5.0" because with the newer Arduino 
 - **Attention:** LED Pin and Trigger Pin values are the integer values behind the Arduino Pin defines. So D5 of the NodeMCU is GPIO14 of the ESP8266 but the Arduino definition is just 14. So you have to enter 14 here.
 
 ## Prepare the Image
-Before you upload an image to LED-Painter you have to generate an image edititor of your choice.
-- You have to rotate the image by 90° so that the bottom line of the image is the first line to draw.
-- Make sure the image width (after rotation) is the same as the number of LEDs you have
+Before you upload an image to LED-Painter you have to generate an image with an image edititor of your choice.
+- You have to rotate the image by 90° so that the bottom pixel row of the image is the first line to draw.
+- Make sure the image width (after rotation) is the same as the number of LEDs you have (e.g. 60 for a 60 LED strip)
 - Make sure you save the image as 24 Bit BMP.
 
-## Upload the Image
-Go to your LED-Lightpainters IP (e.g. http://192.168.4.1/upload) to upload a file.
+## Upload and select the Image
+- Go to your LED-Lightpainters IP (e.g. http://192.168.4.1/upload) to upload a file.
+- Go to the configuration page http://192.168.4.1/config and click on browse to select the image. You will see a preview after selecting the image in the selection box. Click on **Select** to save. On the next page you may chose **Store** to save the selection in SPIFFS (only needed when you want to reboot but keep the image as default)
 
 *Note: you can upload any file you want, but only bmp is displayed on the image selection page*
