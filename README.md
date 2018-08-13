@@ -1,6 +1,6 @@
 # LED-Lightpainter
 A DIY Pixelstick clone for Light Painting using the ESP8266 and a WS2812 Strip (Neopixel)
-
+![LED-Lightpainter](documentation/led_painter.jpg)
 ## Introduction
 Light painting is a technique to paint different patterns on a long exposure photograph by using a moving light source like a flashlight or in this case an WS2812 LED Strip.
 This project uses a cheap ESP8266 based Microcontroller board (like [NodeMCU](https://en.wikipedia.org/wiki/NodeMCU), [WEMOS D1 mini](https://wiki.wemos.cc/products:d1:d1_mini) ) and an addressable WS2812 based LED strip. The number and density of the LEDs can be determined by you.
