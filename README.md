@@ -13,6 +13,12 @@ This project uses a cheap ESP8266 based Microcontroller board (like [NodeMCU](ht
 - Automatic fallback to AP-Mode when the configured Wifi Station couldn't be connected
 - Fallback to AP when trigger button is pressed on Bootup
 
+## Whishlist
+- [ ] Predefined patterns (like Rainbow, color gradient etc.)
+- [ ] TFT/OLED Support
+- [ ] Accelerometer/Gyro support for automatic animation at movement
+- [ ] SDcard Support
+
 ## Compiling
 - Open the project in PlatformIO. Edit the platformio.ini to match your board. 
 leave the setting "platform=espressif8266@1.5.0" because with the newer Arduino framework you might get issues with the webinterface (due to a bug in streamFile-Function).
@@ -23,8 +29,12 @@ leave the setting "platform=espressif8266@1.5.0" because with the newer Arduino 
 ## First start
 - If you have not changed your settings in the source code, the controller will start in AP Mode after 10 Seconds since it couldn't connect to the default Station. After 10-15 Seconds connect to the AP "LED_PainterAP" with the password "ledpainter" and go to the url  http://192.168.4.1/config in your browser. Else go to http://esp8266.local/config or if this doesn't work to the IP which your ESP8266 got from your AP.
 - Now set your configuration
+- The *line time* is the time each pixelline is displayed in milliseconds. Start with 20ms (which means an image with 500 px width takes 10 seconds to display).
 - Click on **Store** to save the Settings permanent to the SPIFFS (as config.json) or click on **Set Temporarily** to store the settings in RAM. 
 - **Attention:** LED Pin and Trigger Pin values are the integer values behind the Arduino Pin defines. So D5 of the NodeMCU is GPIO14 of the ESP8266 but the Arduino definition is just 14. So you have to enter 14 here.
+
+## Webinterface Screenshot
+![LED-Lightpainter_config](documentation/webinterface_config.png)
 
 ## Prepare the Image
 Before you upload an image to LED-Painter you have to generate an image with an image edititor of your choice.
