@@ -13,7 +13,7 @@ This project uses a cheap ESP8266 based Microcontroller board (like [NodeMCU](ht
 - Automatic fallback to AP-Mode when the configured Wifi Station couldn't be connected
 - Fallback to AP when trigger button is pressed on Bootup
 
-## Whishlist
+## Wishlist
 - [ ] Predefined patterns (like Rainbow, color gradient etc.)
 - [ ] TFT/OLED Support
 - [ ] Accelerometer/Gyro support for automatic animation at movement
