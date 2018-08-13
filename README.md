@@ -26,6 +26,11 @@ leave the setting "platform=espressif8266@1.5.0" because with the newer Arduino 
 - Compile the Firmware and upload to your controller.
 - Put your images to the data-folder of the project (or leave it as it is) and select "Upload SPIFFS image" to make the SPIFFS Filesystem ready.
 
+## Used Libraries
+- [Adafruit NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
+- [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
+- BMP drawing code is based on [Bodmer's TFT_HX8357 example](https://github.com/Bodmer/TFT_HX8357/tree/master/examples/Draw_SDCard_Bitmap)
+
 ## First start
 - If you have not changed your settings in the source code, the controller will start in AP Mode after 10 Seconds since it couldn't connect to the default Station. After 10-15 Seconds connect to the AP "LED_PainterAP" with the password "ledpainter" and go to the url  http://192.168.4.1/config in your browser. Else go to http://esp8266.local/config or if this doesn't work to the IP which your ESP8266 got from your AP.
 - Now set your configuration
