@@ -230,18 +230,18 @@ String getContentType(String filename) { // convert the file extension to the MI
 }
 
 void handleRoot(){
-    String page = FPSTR(HTTP_HEAD);
+    String page = FPSTR(PAINTER_HTTP_HEAD);
     page.replace("{v}", "LED-Lightpainter");
-    page += FPSTR(HTTP_STYLE);
-    page += FPSTR(HTTP_JS_IMAGE);
-    page += FPSTR(HTTP_HEAD_END);
+    page += FPSTR(PAINTER_HTTP_STYLE);
+    page += FPSTR(PAINTER_HTTP_JS_IMAGE);
+    page += FPSTR(PAINTER_HTTP_HEAD_END);
     page += F("<h1>LED-Lightpainter</h1><br />");
     page += F("<a href=\"/config\">Configuration</a><br />");
     page += F("<a href=\"/upload\">Upload File</a><br />");
     page += F("<a href=\"/list\">Select Image</a><p />");
     page += F("<form action=\"/action\" method=\"get\"><button name=\"action\" value=\"trigger\" type=\"submit\">Draw Image</button></form>");
 
-    page += FPSTR(HTTP_END);
+    page += FPSTR(PAINTER_HTTP_END);
 
     server.send(200, "text/html", page);
 
@@ -249,11 +249,11 @@ void handleRoot(){
 }
 
 void handleTrigger(){
-    String page = FPSTR(HTTP_HEAD);
+    String page = FPSTR(PAINTER_HTTP_HEAD);
     page.replace("{v}", "Trigger");
-    page += FPSTR(HTTP_STYLE);
-    page += FPSTR(HTTP_JS_IMAGE);
-    page += FPSTR(HTTP_HEAD_END);
+    page += FPSTR(PAINTER_HTTP_STYLE);
+    page += FPSTR(PAINTER_HTTP_JS_IMAGE);
+    page += FPSTR(PAINTER_HTTP_HEAD_END);
     page += F("<h1>LED-Lightpainter</h1><br />");
     page += F("<a href=\"/\">Back to Index</a><br />");
     if(server.hasArg("action")){
@@ -263,7 +263,7 @@ void handleTrigger(){
         drawBMP(configuration.image_to_draw);
       }
     }
-    page += FPSTR(HTTP_END);
+    page += FPSTR(PAINTER_HTTP_END);
 
     server.send(200, "text/html", page);
     
@@ -316,33 +316,33 @@ void handleFileUpload(){ // upload a new file to the SPIFFS
 }
 
 void handleFileUploadDialog(){
-    String page = FPSTR(HTTP_HEAD);
+    String page = FPSTR(PAINTER_HTTP_HEAD);
     page.replace("{v}", "File Upload");
-    page += FPSTR(HTTP_STYLE);
-    page += FPSTR(HTTP_JS_IMAGE);
-    page += FPSTR(HTTP_HEAD_END);
+    page += FPSTR(PAINTER_HTTP_STYLE);
+    page += FPSTR(PAINTER_HTTP_JS_IMAGE);
+    page += FPSTR(PAINTER_HTTP_HEAD_END);
     page += F("<h1>File Upload</h1><br />");
     page += F("<form action=\"/upload\" method=\"POST\" enctype=\"multipart/form-data\">");
     page += F("<input type=\"file\" name=\"data\">");
     page += F("<input type=\"submit\" value=\"Upload\">");
     page += F("</form>");
     
-    page += FPSTR(HTTP_END);
+    page += FPSTR(PAINTER_HTTP_END);
 
     server.send(200, "text/html", page);
 
 }
 
 void handleSuccess(){
-  String page = FPSTR(HTTP_HEAD);
+  String page = FPSTR(PAINTER_HTTP_HEAD);
     page.replace("{v}", "Upload Success");
-    page += FPSTR(HTTP_STYLE);
-    page += FPSTR(HTTP_HEAD_END);
+    page += FPSTR(PAINTER_HTTP_STYLE);
+    page += FPSTR(PAINTER_HTTP_HEAD_END);
 
     page += F("<h1>ESP8266 SPIFFS File Upload Successful</h1>");
     page += F("<p><a href=\"/\">Home</a></p>");
 
-    page += FPSTR(HTTP_END);
+    page += FPSTR(PAINTER_HTTP_END);
     server.send(200, "text/html", page);
 }
 
@@ -354,12 +354,12 @@ const String formatBytes(size_t const& bytes) {            // lesbare Anzeige de
 void handleFileList(){
     FSInfo fs_info;  SPIFFS.info(fs_info);    // Füllt FSInfo Struktur mit Informationen über das Dateisystem
     Dir dir = SPIFFS.openDir("/");            // Auflistung aller im Spiffs vorhandenen Dateien
-    String page = FPSTR(HTTP_HEAD);
+    String page = FPSTR(PAINTER_HTTP_HEAD);
     int i=0;
     page.replace("{v}", "List Images");
-    page += FPSTR(HTTP_STYLE);
-    page += FPSTR(HTTP_JS_IMAGE);
-    page += FPSTR(HTTP_HEAD_END);
+    page += FPSTR(PAINTER_HTTP_STYLE);
+    page += FPSTR(PAINTER_HTTP_JS_IMAGE);
+    page += FPSTR(PAINTER_HTTP_HEAD_END);
     page += F("<form action=\"/config\" method=\"get\">");
     page += F("<select name=\"image\" size=\"10\" onchange=\"setImage(this)\">");
     while (dir.next()) {
@@ -375,7 +375,7 @@ void handleFileList(){
     page += F("<button type=\"submit\">Select</button></form>");
     page += F("<br /><img id=\"PrevImg\" src=\"\" />");
 
-    page += FPSTR(HTTP_END);
+    page += FPSTR(PAINTER_HTTP_END);
 
     server.send(200, "text/html", page);
 
@@ -429,10 +429,10 @@ void handleConfig(){
       }
     }
       
-  String page = FPSTR(HTTP_HEAD);
+  String page = FPSTR(PAINTER_HTTP_HEAD);
   page.replace("{v}", "Config");
-  page += FPSTR(HTTP_STYLE);
-  page += FPSTR(HTTP_HEAD_END);
+  page += FPSTR(PAINTER_HTTP_STYLE);
+  page += FPSTR(PAINTER_HTTP_HEAD_END);
 
   page += F("<h1>LED-Lightpainter Config</h1><br />");
   page += F("<form method=\"get\">");
@@ -480,7 +480,7 @@ void handleConfig(){
   page += F("</form>");
   page += F("</div></body></html>");
 
-  page += FPSTR(HTTP_END);
+  page += FPSTR(PAINTER_HTTP_END);
 
   server.send(200, "text/html", page);
 
@@ -489,10 +489,10 @@ void handleConfig(){
 void handleBrowseWifi(){
   int numberOfNetworks = WiFi.scanNetworks();
 
-  String page = FPSTR(HTTP_HEAD);
+  String page = FPSTR(PAINTER_HTTP_HEAD);
   page.replace("{v}", "Browse Wifi");
-  page += FPSTR(HTTP_STYLE);
-  page += FPSTR(HTTP_HEAD_END);
+  page += FPSTR(PAINTER_HTTP_STYLE);
+  page += FPSTR(PAINTER_HTTP_HEAD_END);
 
   page += F("<form action=\"/config\" method=\"get\">");
   page += F("<select name=\"sta_ssid\" size=\"10\">");
@@ -505,7 +505,7 @@ void handleBrowseWifi(){
   }
   page += F("</select>");
   page += F("<button type=\"submit\">Select</button></form>");
-  page += FPSTR(HTTP_END);
+  page += FPSTR(PAINTER_HTTP_END);
 
   server.send(200, "text/html", page);
 
